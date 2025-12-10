@@ -48,22 +48,22 @@ const HomePage = (props) => {
   const trustedOperators = [
     {
       name: "VRL Travels",
-      logoUrl: "/public/images/intrcity_smartbus_logo.png",
+      logoUrl: "/images/intrcity_smartbus_logo.png",
       price: "₹450",
     }, // Replace with actual paths
     {
       name: "SRS Travels",
-      logoUrl: "/public/images/nuelogo.png",
+      logoUrl: "/images/nuelogo.png",
       price: "₹650",
     },
     {
       name: "Orange Tours",
-      logoUrl: "/public/images/ss-logo.png",
+      logoUrl: "/images/ss-logo.png",
       price: "₹550",
     },
     {
       name: "KPN Travels",
-      logoUrl: "/public/images/zingbus-company-logo.png",
+      logoUrl: "/images/zingbus-company-logo.png",
       price: "₹850",
     },
   ];
