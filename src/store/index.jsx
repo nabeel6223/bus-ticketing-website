@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import BusListSlice from "./slices/BusListSlice";
-import PassengerListSlice from "./slices/PassengerSlice";
+import BusListSlice from "./slices/BusListSlice.jsx";
+import PassengerListSlice from "./slices/PassengerSlice.jsx";
 
 const store = configureStore({
   reducer: {

@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import { FaHelmetSafety, FaShield } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
-import { setSearchParams } from "../store/slices/BusListSlice";
+import { setSearchParams } from "../store/slices/BusListSlice.jsx";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = (props) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import BusCard from "../list/components/busCard";
-import BusCard2 from "../list/components/BusCard2";
+import BusCard from "../list/components/busCard.jsx";
+import BusCard2 from "../list/components/BusCard2.jsx";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import {
   setSelectedBusId,
   setSelectedBusSeats,
 } from "../store/slices/BusListSlice";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader.jsx";
 
 function BusDetails() {
   const seats = 6;

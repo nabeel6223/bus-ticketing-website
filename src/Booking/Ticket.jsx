@@ -12,7 +12,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader.jsx";
 
 const ETicketComponent = ({ bookingDetails }) => {
   // Destructure booking details for easy access
