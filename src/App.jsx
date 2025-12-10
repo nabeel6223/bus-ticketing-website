@@ -5,7 +5,7 @@ import "./App.css";
 import HomePage from "./home/home";
 import { Route, Routes } from "react-router-dom";
 import List from "./list/list";
-import Header from "./Header/header.jsx";
+import Header from "./Header/Header.jsx";
 import BusDetails from "./Details/BusDetails.jsx";
 import PassengerInfo from "./Booking/PassengerInfo.jsx";
 import ConfirmPage from "./Booking/ConfirmPage.jsx";
