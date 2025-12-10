@@ -1,16 +1,103 @@
-# React + Vite
+# 🚌 Hop-On Bus Ticketing Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack bus ticket booking application built with **React**, **Node.js**, and **Express**.  
+It allows users to search buses, select seats, make bookings, and view ticket details through an intuitive interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo  
+Frontend (Netlify): **https://hop-on-bus-tickets.netlify.app/**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Repositories  
+- **Frontend:** https://github.com/nabeel6223/bus-ticketing-website  
+- **Backend:** https://github.com/nabeel6223/bus-ticketing-backend
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+### **Frontend**
+- React + Vite  
+- Tailwind CSS  
+- Axios  
+- React Router  
+- Redux
+
+### **Backend**
+- Node.js  
+- Express.js     
+- REST API Endpoints
+
+---
+
+## 📁 Project Structure (Frontend)
+
+src/
+├── assets/ # Images, icons, etc.
+├── Booking/ # Booking page components
+├── Details/ # Ticket or bus details page
+├── Footer/ # Footer components
+├── Header/ # Header components
+├── home/ # Home page components
+├── list/ # Bus listing page components
+├── Loader/ # Loader components
+├── store/ # State management (Redux)
+├── utils/ # Utility functions
+├── App.jsx
+├── main.jsx
+├── App.css
+├── GlobalStyles.css
+└── index.css
+public/
+├── images/
+└── vite.svg
+
+---
+
+## ▶️ Running the Project Locally
+
+```bash
+git clone https://github.com/nabeel6223/bus-ticketing-website
+cd bus-ticketing-website
+npm install
+npm run dev
+```
+
+✨ Features
+
+  🔍 Search buses based on route and date
+  🪑 Seat selection with dynamic availability
+  💳 Ticket booking workflow
+  🎫 View booking summary
+  📱 Responsive UI
+
+
+🪄 How to Use the App
+
+  1. Home Page
+  
+  Search buses by entering source, destination, and date.
+  
+  Click Search to view available buses.
+  
+  2. Bus Listing Page
+  
+  Displays buses matching search criteria.
+  
+  Select a bus to proceed to seat selection.
+  
+  3. Booking / Seat Selection
+  
+  Choose available seats.
+  
+  Seat price and GST are calculated automatically.
+    
+  4. Ticket Details Page
+  
+  View booked ticket summary, including seats, route, and fare.
+  
+
+
+
