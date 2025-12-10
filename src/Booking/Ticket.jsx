@@ -74,7 +74,7 @@ const ETicketComponent = ({ bookingDetails }) => {
   if (loading) return <Loader />;
   else if (data != null)
     return (
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden my-8">
+      <div className=" bg-white rounded-2xl shadow-2xl overflow-hidden my-8 mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56">
         {/* Ticket Header & Status */}
         <div className="bg-blue-600 text-white p-6 flex justify-between items-center">
           <div className="flex items-center">
@@ -90,7 +90,7 @@ const ETicketComponent = ({ bookingDetails }) => {
         {/* Main Content Grid */}
         <div className="p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column: Trip Details (2/3 width) */}
-          <div className="lg:col-span-2 space-y-8 pr-4 border-r lg:border-gray-200">
+          <div className="lg:col-span-2 space-y-8 pr-4 lg:border-gray-200">
             {/* Bus & Route Info */}
             <div className="border-b pb-4">
               <h3 className="text-xl font-bold text-gray-700 mb-4 flex items-center">

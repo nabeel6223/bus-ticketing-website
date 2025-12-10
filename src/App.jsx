@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -13,13 +13,14 @@ import Footer from "./Footer/Footer.jsx";
 import ETicketComponent from "./Booking/Ticket.jsx";
 
 function App() {
+  const offerRef = useRef(null);
   return (
     <>
       <Fragment>
-        <Header />
+        <Header ref={offerRef} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/list" element={<List />} />
+          <Route path="/" element={<HomePage ref={offerRef} />} />
+          <Route path="/search" element={<List />} />
           <Route path="/details/:id" element={<BusDetails />} />
           <Route path="/form/:id" element={<PassengerInfo />} />
           <Route path="/confirm/:id" element={<ConfirmPage />} />

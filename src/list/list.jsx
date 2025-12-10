@@ -117,7 +117,7 @@ function List() {
           </div>
         </div>
       </section>
-      <div className="flex flex-wrap flex-grow gap-8 width-100  pl-20 pr-20 my-30">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8  mx-4 sm:mx-8 md:mx-16 lg:mx-20 xl:mx-20 sm:my-30 my-50">
         {buses.length > 0 ? (
           buses.map((item) => {
             return (
@@ -144,7 +144,7 @@ function List() {
             <img
               src="/images/no_bus_found_illustration.png"
               alt=""
-              className="object-center mx-auto h-80"
+              className="object-center mx-auto h-60 col-span-4"
             />
           </>
         )}

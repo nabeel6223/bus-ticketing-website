@@ -23,7 +23,7 @@ const BusCard = ({ bus }) => {
   } = bus;
 
   return (
-    <div className=" w-[calc(25%-24px)] bg-white p-6 mb-6 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl">
+    <div className="  bg-white p-6 mb-6 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl">
       {/* Header: Operator, Type & Ratings */}
       <div className="flex justify-between items-start mb-4 pb-3 border-b border-gray-100 gap-4">
         <div>

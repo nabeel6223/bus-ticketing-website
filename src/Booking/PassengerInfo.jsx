@@ -10,6 +10,9 @@ import { useNavigate, useParams } from "react-router-dom";
 function PassengerInfo() {
   return (
     <div>
+      <h2 className="text-3xl font-bold text-center mt-10 text-gray-800 ">
+        Passenger Information
+      </h2>
       <ContactAndPassengersForm />
     </div>
   );
@@ -28,7 +31,7 @@ function ContactAndPassengersForm() {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
   } = useForm({
     defaultValues: {
       contact: {},
@@ -41,9 +44,32 @@ function ContactAndPassengersForm() {
     name: "passengers",
   });
 
+  // // 1️Redirect user if the page was refreshed (browser reload)
+  // useEffect(() => {
+  //   const navEntry = performance.getEntriesByType("navigation")[0];
+  //   console.log(navEntry);
+  //   if (navEntry?.type === "reload") {
+  //     navigate(`/details/${id}`);
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      // if (isDirty) {
+      event.returnValue =
+        "You have unsaved changes. Are you sure you want to leave?";
+    };
+    // };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isDirty]);
+
   const onSubmit = (data) => {
     // handle completed form
-    console.log("FORM SUBMITTED", data);
     dispatch(setContactDetails(data.contact));
     dispatch(setPassengerDetails(data.passengers));
     navigate(`/confirm/${id}`);

@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { setSearchParams } from "../store/slices/BusListSlice";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = (props) => {
   const [fromCity, setFromCity] = useState("");
   const [toCity, setToCity] = useState("");
   const [travelDate, setTravelDate] = useState("");
@@ -27,10 +27,6 @@ const HomePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("From:", fromCity);
-    console.log("To:", toCity);
-    console.log("Date:", travelDate);
-
     dispatch(
       setSearchParams({
         fromCity: fromCity,
@@ -38,7 +34,7 @@ const HomePage = () => {
         date: travelDate,
       })
     );
-    navigate("/list");
+    navigate("/search");
     // You can now use these values for API call or navigation
   };
   // Sample data for demonstration
@@ -138,7 +134,7 @@ const HomePage = () => {
       </section>
 
       {/* --- 3. Popular Routes --- */}
-      <section className="py-16 bg-white ml-40 mr-40">
+      <section className="py-16 bg-white mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 ">
             Popular Routes
@@ -163,7 +159,21 @@ const HomePage = () => {
                 <p className="text-2xl font-bold text-gray-700 mb-4">
                   {route.price}
                 </p>
-                <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-700 transition duration-200 font-medium">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    dispatch(
+                      setSearchParams({
+                        fromCity: route.from,
+                        toCity: route.to,
+                        // date: travelDate,
+                      })
+                    );
+                    navigate("/search");
+                  }}
+                  className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-700 transition duration-200 font-medium"
+                >
                   Book Now
                 </button>
               </div>
@@ -173,7 +183,7 @@ const HomePage = () => {
       </section>
 
       {/* --- 4. Trusted Operators --- */}
-      <section className="py-16 bg-white ml-40 mr-40">
+      <section className="py-16 bg-white mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 ">
             Trusted Operators
@@ -208,16 +218,16 @@ const HomePage = () => {
                   <FaStar className="  text-yellow-500 text-sm" />
                   <FaStar className="  text-gray-300 text-sm" />
                 </div>
-                <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-700 transition duration-200 font-medium">
+                {/* <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-700 transition duration-200 font-medium">
                   View Buses
-                </button>
+                </button> */}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-white ml-40 mr-40">
+      <section className="py-16 bg-white mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 ">
             Why Choose Us?
@@ -259,7 +269,10 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-white ml-40 mr-40 flex">
+      <section
+        ref={props.ref}
+        className="py-16 bg-white mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"
+      >
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 ">
             Offers & Discounts

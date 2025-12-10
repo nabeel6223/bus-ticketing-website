@@ -19,6 +19,31 @@ function ConfirmPage() {
   const [bus, setBus] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
+
+  // // 1️Redirect user if the page was refreshed (browser reload)
+  // useEffect(() => {
+  //   const navEntry = performance.getEntriesByType("navigation")[0];
+
+  //   if (navEntry?.type === "reload") {
+  //     navigate(`/details/${id}`);
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      // if (isDirty) {
+      event.returnValue =
+        "You have unsaved changes. Are you sure you want to leave?";
+    };
+    // };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   useEffect(() => {
     const getBusDetails = async () => {
       setLoading(true);
@@ -68,7 +93,10 @@ function ConfirmPage() {
 
   if (loading) return <Loader />;
   return (
-    <div className="ml-40 mr-40 mt-40">
+    <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56 mt-40">
+      <h2 className="text-3xl font-bold text-center mt-10 text-gray-800 ">
+        Review Booking
+      </h2>
       <div className="flex-column align-center">
         <BusCard2
           bus={{
@@ -86,8 +114,8 @@ function ConfirmPage() {
             availableSeats: bus["availableSeats"],
           }}
         />
-        <div className="flex-row gap-8 flex-wrap">
-          <div className="w-[calc(50%-24px)] bg-white rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl rounded-lg">
+        <div className=" gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl rounded-lg">
             <div className="text-xl p-2 font-medium text-gray-700 mb-4 bg-gray-300 ">
               Fare Summary
             </div>
@@ -128,30 +156,30 @@ function ConfirmPage() {
               </div>
             </div>
           </div>
-          <div className=" w-[calc(50%-24px)] bg-white rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl rounded-lg">
+          <div className=" bg-white rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl rounded-lg">
             <div className="text-xl p-2 font-medium text-gray-700 mb-4 bg-gray-300 ">
               Contact Details
             </div>
-            <div className="flex-row justify-space p-2">
+            <div className="flex-row justify-space p-2 gap-2">
               <div className="text-sm font-bold text-gray-700 ">Name</div>
               <div className="text-sm font-bold text-gray-700 ">
                 {contactDetails["name"]}
               </div>
             </div>
-            <div className="flex-row justify-space p-2">
+            <div className="flex-row justify-space p-2 gap-2">
               <div className="text-sm font-bold text-gray-700 ">Mobile</div>
               <div className="text-sm font-bold text-gray-700 ">
                 {contactDetails["mobile"]}
               </div>
             </div>
-            <div className="flex-row justify-space p-2">
+            <div className="flex-row justify-space p-2 gap-2">
               <div className="text-sm font-bold text-gray-700 ">Email</div>
               <div className="text-sm font-bold text-gray-700 ">
                 {contactDetails["email"]}
               </div>
             </div>
           </div>
-          <div className=" w-[calc(50%-24px)] bg-white rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl rounded-lg">
+          <div className="  bg-white rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl rounded-lg">
             <div className="text-xl p-2 font-medium text-gray-700 mb-4 bg-gray-300 ">
               Passenger(s)
             </div>
@@ -168,13 +196,13 @@ function ConfirmPage() {
               );
             })}
           </div>
-          <button
-            onClick={submitData}
-            className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-700 transition duration-200 font-medium"
-          >
-            Comfirm Booking
-          </button>
         </div>
+        <button
+          onClick={submitData}
+          className="mt-10 bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-700 transition duration-200 font-medium"
+        >
+          Confirm Booking
+        </button>
       </div>
     </div>
   );

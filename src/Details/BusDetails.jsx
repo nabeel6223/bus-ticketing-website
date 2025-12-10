@@ -8,6 +8,7 @@ import {
   setSelectedBusId,
   setSelectedBusSeats,
 } from "../store/slices/BusListSlice";
+import Loader from "../Loader/Loader";
 
 function BusDetails() {
   const seats = 6;
@@ -21,12 +22,29 @@ function BusDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const bookedSeats = [4, 9, 1, 10];
+  const [bookedSeats, setBookedSeats] = useState([]);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" }); // Scrolls to the top smoothly
     // Or, for an instant jump:
     // window.scrollTo(0, 0);
   }, []); // Empty dependency array ensures this runs only once on mount
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      if (selectedSeats.length > 0) {
+        // This message might not be displayed directly by the browser,
+        // but its presence triggers the confirmation dialog.
+        event.returnValue =
+          "You have unsaved changes. Are you sure you want to leave?";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [selectedSeats]);
 
   useEffect(() => {
     const getBusDetails = async () => {
@@ -39,6 +57,7 @@ function BusDetails() {
         })
         .then((resp) => {
           setBus(resp.data.data[0]);
+          setBookedSeats(resp.data.data[0]["bookedSeats"]);
         })
         .catch((error) => {
           console.log(error);
@@ -55,17 +74,18 @@ function BusDetails() {
     console.log(selectedBusSeats);
   }, [selectedBusSeats]);
 
+  if (loading) return <Loader />;
   return (
-    <div className="width-100 ml-40 mr-40 mt-20">
-      <div className="flex-row width-100 padding-20 gap-20 ">
-        <div className="seat-selection flex-column gap-4 bg-gray-200 p-10 rounded-3xl">
+    <div className=" mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 2xl:mx-56  mt-20 ">
+      <div className="padding-20 gap-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="seat-selection flex-column gap-4 bg-gray-200 p-10 rounded-3xl w-fit">
           {Array.from({ length: seats }).map((item, index) => {
             return (
               <div className="flex-row gap-20">
                 <div className="flex-column">
                   <div
                     onClick={() => {
-                      if (bookedSeats.includes(3 * (index + 1) - 2)) return;
+                      if (bookedSeats?.includes(3 * (index + 1) - 2)) return;
                       if (!selectedSeats.includes(3 * (index + 1) - 2)) {
                         setSelectedSeats((prev) => [
                           ...prev,
@@ -86,7 +106,7 @@ function BusDetails() {
                         3 * (index + 1) - 2
                       )
                         ? "green"
-                        : bookedSeats.includes(3 * (index + 1) - 2)
+                        : bookedSeats?.includes(3 * (index + 1) - 2)
                         ? "gray"
                         : "white",
                     }}
@@ -94,7 +114,7 @@ function BusDetails() {
                     <div className="border-2 border-gray-300 m-2 rounded-sm"></div>
                   </div>
                   <div className="text-sm text-center text-gray-800 ">
-                    {bookedSeats.includes(3 * (index + 1) - 2)
+                    {bookedSeats?.includes(3 * (index + 1) - 2)
                       ? "Sold"
                       : `₹ ${bus["fare"]}`}
                   </div>
@@ -104,7 +124,7 @@ function BusDetails() {
                   <div className="flex-column">
                     <div
                       onClick={() => {
-                        if (bookedSeats.includes(3 * (index + 1) - 1)) return;
+                        if (bookedSeats?.includes(3 * (index + 1) - 1)) return;
                         if (!selectedSeats.includes(3 * (index + 1) - 1)) {
                           setSelectedSeats((prev) => [
                             ...prev,
@@ -125,7 +145,7 @@ function BusDetails() {
                           3 * (index + 1) - 1
                         )
                           ? "green"
-                          : bookedSeats.includes(3 * (index + 1) - 1)
+                          : bookedSeats?.includes(3 * (index + 1) - 1)
                           ? "gray"
                           : "white",
                       }}
@@ -133,7 +153,7 @@ function BusDetails() {
                       <div className="border-2 border-gray-300 m-2 rounded-sm"></div>
                     </div>
                     <div className="text-sm text-center text-gray-800 ">
-                      {bookedSeats.includes(3 * (index + 1) - 1)
+                      {bookedSeats?.includes(3 * (index + 1) - 1)
                         ? "Sold"
                         : `₹ ${bus["fare"]}`}
                     </div>
@@ -141,7 +161,7 @@ function BusDetails() {
                   <div className="flex-column">
                     <div
                       onClick={() => {
-                        if (bookedSeats.includes(3 * (index + 1))) return;
+                        if (bookedSeats?.includes(3 * (index + 1))) return;
                         if (!selectedSeats.includes(3 * (index + 1))) {
                           setSelectedSeats((prev) => [
                             ...prev,
@@ -160,7 +180,7 @@ function BusDetails() {
                         border: "1px solid black",
                         backgroundColor: selectedSeats.includes(3 * (index + 1))
                           ? "green"
-                          : bookedSeats.includes(3 * (index + 1))
+                          : bookedSeats?.includes(3 * (index + 1))
                           ? "gray"
                           : "white",
                       }}
@@ -168,7 +188,7 @@ function BusDetails() {
                       <div className="border-2 border-gray-300 m-2 rounded-sm"></div>
                     </div>
                     <div className="text-sm text-center text-gray-800 ">
-                      {bookedSeats.includes(3 * (index + 1))
+                      {bookedSeats?.includes(3 * (index + 1))
                         ? "Sold"
                         : `₹ ${bus["fare"]}`}
                     </div>
@@ -178,7 +198,7 @@ function BusDetails() {
             );
           })}
         </div>
-        <div className="flex-grow">
+        <div className="">
           <BusCard2
             bus={{
               operatorName: bus["operator"],
