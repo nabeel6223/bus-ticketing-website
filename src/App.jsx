@@ -5,12 +5,12 @@ import "./App.css";
 import HomePage from "./home/home";
 import { Route, Routes } from "react-router-dom";
 import List from "./list/list";
-import Header from "./Header/header";
-import BusDetails from "./Details/BusDetails";
-import PassengerInfo from "./Booking/PassengerInfo";
-import ConfirmPage from "./Booking/ConfirmPage";
-import Footer from "./Footer/Footer";
-import ETicketComponent from "./Booking/Ticket";
+import Header from "./Header/header.jsx";
+import BusDetails from "./Details/BusDetails.jsx";
+import PassengerInfo from "./Booking/PassengerInfo.jsx";
+import ConfirmPage from "./Booking/ConfirmPage.jsx";
+import Footer from "./Footer/Footer.jsx";
+import ETicketComponent from "./Booking/Ticket.jsx";
 
 function App() {
   return (
