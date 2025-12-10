@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import BusCard from "./components/busCard";
+import BusCard from "./components/busCard.jsx";
 import axios from "axios";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader.jsx";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchParams } from "../store/slices/BusListSlice";
+import { setSearchParams } from "../store/slices/BusListSlice.jsx";
 
 function List() {
   const basePath = import.meta.env.VITE_API_BASE_PATH;
