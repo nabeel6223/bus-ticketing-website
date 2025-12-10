@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BusCard from "../list/components/busCard.jsx";
+import BusCard from "../list/components/BusCard.jsx";
 import BusCard2 from "../list/components/BusCard2.jsx";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";

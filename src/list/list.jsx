@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BusCard from "./components/busCard.jsx";
+import BusCard from "./components/BusCard.jsx";
 import axios from "axios";
 import Loader from "../Loader/Loader.jsx";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
