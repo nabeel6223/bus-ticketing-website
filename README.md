@@ -34,6 +34,7 @@ Frontend (Netlify): **https://hop-on-bus-tickets.netlify.app/**
 
 ## 📁 Project Structure (Frontend)
 
+```bash
 src/
 ├── assets/ # Images, icons, etc.
 ├── Booking/ # Booking page components
@@ -53,7 +54,7 @@ src/
 public/
 ├── images/
 └── vite.svg
-
+```
 ---
 
 ## ▶️ Running the Project Locally
